@@ -19,6 +19,7 @@ public class ConversionApiRepository {
 
         ConversionStrategy converter;
 
+
         switch (request.getFromType()) {
             case "g":
             case "G":
