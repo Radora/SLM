@@ -1,5 +1,8 @@
 package com.example.conversionapi;
 
+import com.example.conversionapi.GUI.TemperatureUI;
+import com.example.conversionapi.GUI.WeightUI;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;

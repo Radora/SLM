@@ -1,4 +1,4 @@
-package com.example.conversionapi;
+package com.example.conversionapi.GUI;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
