@@ -3,6 +3,8 @@ package com.example.conversionapi;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import com.example.conversionapi.UnitConversionsUI;
 import com.example.conversionapi.model.ConversionRestResponseModel;
@@ -69,10 +71,34 @@ public class TemperatureUI extends JFrame {
         labelCelsiusUnit.setBounds(284, 91, 55, 40);
         contentPanel.add(labelCelsiusUnit);
 
+        JButton btnC = new JButton("Convert");
+        btnC.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                if(celsius.getText().isEmpty())
+                {
+                    errorTempMessage.setText("Your input is empty! Please enter a value.");
+                }
 
+                else
+                {
+                    errorTempMessage.setText(null);
+                    double cel = Double.parseDouble(celsius.getText());
+                    unitConversionRequestModel.setFromType("c");
+                    unitConversionRequestModel.setToType("f");
+                    unitConversionRequestModel.setFromValue((float)cel);
+                    conversionRestResponseModel = conversionApiRepository.readRequest(unitConversionRequestModel);
 
-
-
+                    String far = String.format("%.2f",conversionRestResponseModel.getResult());
+                    fahrenheit.setText(far);
+                    //System.out.println(far);
+                }
+            }
+        });
+        btnC.setForeground(new Color(255, 255, 0));
+        btnC.setBackground(new Color(25, 25, 112));
+        btnC.setFont(new Font("Tahoma", Font.PLAIN, 18));
+        btnC.setBounds(351, 91, 100, 40);
+        contentPanel.add(btnC);
 
 
         //Fahrenheit label + inputfield + Converter button
@@ -97,5 +123,35 @@ public class TemperatureUI extends JFrame {
         labelFahrenheitUnit.setFont(new Font("Tahoma", Font.PLAIN, 30));
         labelFahrenheitUnit.setBounds(284, 157, 55, 40);
         contentPanel.add(labelFahrenheitUnit);
+
+        JButton btnF = new JButton("Convert");
+        btnF.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                if(fahrenheit.getText().isEmpty())
+                {
+                    errorTempMessage.setText("Your input is empty! Please enter a value.");
+                }
+
+                else
+                {
+                    errorTempMessage.setText(null);
+                    double far = Double.parseDouble(fahrenheit.getText());
+                    unitConversionRequestModel.setFromType("f");
+                    unitConversionRequestModel.setToType("c");
+                    unitConversionRequestModel.setFromValue((float)far);
+                    conversionRestResponseModel = conversionApiRepository.readRequest(unitConversionRequestModel);
+
+                    String cel = String.format("%.2f", conversionRestResponseModel.getResult());
+
+                    celsius.setText(cel);
+                    //System.out.println(cel);
+                }
+            }
+        });
+        btnF.setForeground(Color.YELLOW);
+        btnF.setFont(new Font("Tahoma", Font.PLAIN, 18));
+        btnF.setBackground(new Color(25, 25, 112));
+        btnF.setBounds(351, 157, 100, 40);
+        contentPanel.add(btnF);
     }
 }

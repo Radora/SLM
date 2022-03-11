@@ -9,6 +9,8 @@ import com.example.conversionapi.model.UnitConversionRequestModel;
 import com.example.conversionapi.repository.ConversionApiRepository;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 
 public class WeightUI extends JFrame {
@@ -74,9 +76,34 @@ public class WeightUI extends JFrame {
         labelGramUnit.setBounds(284, 100, 55, 40);
         contentPanel.add(labelGramUnit);
 
+        JButton btnG = new JButton("Convert");
+        btnG.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                if(gramm.getText().isEmpty())
+                {
+                    errorWeightMessage.setText("Your input is empty! Please enter a value.");
+                }
+                else
+                {
+                    errorWeightMessage.setText(null);
+                    double gm = Double.parseDouble(gramm.getText());
+                    unitConversionRequestModel.setFromType("g");
+                    unitConversionRequestModel.setToType("kg");
+                    unitConversionRequestModel.setFromValue((float) gm);
+                    conversionRestResponseModel = conversionApiRepository.readRequest(unitConversionRequestModel);
 
+                    String kg = String.format("%.4f", conversionRestResponseModel.getResult());
 
-
+                    kilogram.setText(kg);
+                    //System.out.println(kg);
+                }
+            }
+        });
+        btnG.setForeground(Color.YELLOW);
+        btnG.setFont(new Font("Tahoma", Font.PLAIN, 18));
+        btnG.setBackground(new Color(25, 25, 112));
+        btnG.setBounds(351, 100, 100, 40);
+        contentPanel.add(btnG);
 
 
         //Kilogram label + inputfield + Converter button
@@ -101,6 +128,34 @@ public class WeightUI extends JFrame {
         labelKilogramUnit.setBackground(Color.BLACK);
         labelKilogramUnit.setBounds(284, 170, 55, 40);
         contentPanel.add(labelKilogramUnit);
+
+        JButton btnKg = new JButton("Convert");
+        btnKg.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                if(kilogram.getText().isEmpty())
+                {
+                    errorWeightMessage.setText("Your input is empty! Please enter a value.");
+                }
+                else
+                {
+                    errorWeightMessage.setText(null);
+                    double Kg = Double.parseDouble(kilogram.getText());
+                    unitConversionRequestModel.setFromType("kg");
+                    unitConversionRequestModel.setToType("g");
+                    unitConversionRequestModel.setFromValue((float) Kg);
+                    conversionRestResponseModel = conversionApiRepository.readRequest(unitConversionRequestModel);
+
+                    String GM = String.format("%.4f", conversionRestResponseModel.getResult());
+
+                    gramm.setText(GM);
+                }
+            }
+        });
+        btnKg.setForeground(Color.YELLOW);
+        btnKg.setFont(new Font("Tahoma", Font.PLAIN, 18));
+        btnKg.setBackground(new Color(25, 25, 112));
+        btnKg.setBounds(351, 170, 100, 40);
+        contentPanel.add(btnKg);
 
 
     }
