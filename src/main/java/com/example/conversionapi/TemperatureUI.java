@@ -202,5 +202,16 @@ public class TemperatureUI extends JFrame {
         btnTempClear.setBounds(200, 499, 129, 41);
         contentPanel.add(btnTempClear);
 
+        //Error message text field
+
+        errorTempMessage = new JTextField();
+        errorTempMessage.setForeground(Color.RED);
+        errorTempMessage.setBackground(Color.BLACK);
+        errorTempMessage.setFont(new Font("Tahoma", Font.PLAIN, 18));
+        errorTempMessage.setHorizontalAlignment(SwingConstants.CENTER);
+        errorTempMessage.setBounds(12, 349, 458, 137);
+        contentPanel.add(errorTempMessage);
+        errorTempMessage.setColumns(10);
+
     }
 }

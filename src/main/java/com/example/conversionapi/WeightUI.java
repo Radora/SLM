@@ -206,6 +206,16 @@ public class WeightUI extends JFrame {
         btnWeightClear.setBounds(200, 499, 129, 41);
         contentPanel.add(btnWeightClear);
 
+        //Error message text field
+
+        errorWeightMessage = new JTextField();
+        errorWeightMessage.setForeground(Color.RED);
+        errorWeightMessage.setBackground(Color.BLACK);
+        errorWeightMessage.setFont(new Font("Tahoma", Font.PLAIN, 18));
+        errorWeightMessage.setHorizontalAlignment(SwingConstants.CENTER);
+        errorWeightMessage.setBounds(12, 349, 458, 137);
+        contentPanel.add(errorWeightMessage);
+        errorWeightMessage.setColumns(10);
 
     }
 }
