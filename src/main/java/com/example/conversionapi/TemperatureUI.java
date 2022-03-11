@@ -153,5 +153,54 @@ public class TemperatureUI extends JFrame {
         btnF.setBackground(new Color(25, 25, 112));
         btnF.setBounds(351, 157, 100, 40);
         contentPanel.add(btnF);
+
+        //Main menu button
+
+        JButton btnTempMainMenu = new JButton("Main Menu");
+        btnTempMainMenu.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                UnitConversionsUI unitConversionsUI = new UnitConversionsUI();
+                unitConversionsUI.setVisible(true);
+                dispose();
+            }
+        });
+        btnTempMainMenu.setForeground(Color.WHITE);
+        btnTempMainMenu.setFont(new Font("Tahoma", Font.PLAIN, 20));
+        btnTempMainMenu.setBackground(Color.BLUE);
+        btnTempMainMenu.setBounds(12, 499, 176, 41);
+        contentPanel.add(btnTempMainMenu);
+
+
+        //Exit button
+
+        JButton btnTempExit = new JButton("Exit");
+        btnTempExit.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+            }
+        });
+        btnTempExit.setForeground(Color.WHITE);
+        btnTempExit.setFont(new Font("Tahoma", Font.PLAIN, 20));
+        btnTempExit.setBackground(Color.RED);
+        btnTempExit.setBounds(341, 499, 129, 41);
+        contentPanel.add(btnTempExit);
+
+
+        //Clear button
+
+        JButton btnTempClear = new JButton("Clear");
+        btnTempClear.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                celsius.setText(null);
+                fahrenheit.setText(null);
+                errorTempMessage.setText(null);
+            }
+        });
+        btnTempClear.setForeground(Color.WHITE);
+        btnTempClear.setFont(new Font("Tahoma", Font.PLAIN, 20));
+        btnTempClear.setBackground(new Color(0, 100, 0));
+        btnTempClear.setBounds(200, 499, 129, 41);
+        contentPanel.add(btnTempClear);
+
     }
 }

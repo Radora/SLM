@@ -157,6 +157,55 @@ public class WeightUI extends JFrame {
         btnKg.setBounds(351, 170, 100, 40);
         contentPanel.add(btnKg);
 
+        //Main menu button
+
+        JButton btnWeightMainMenu = new JButton("Main Menu");
+        btnWeightMainMenu.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                UnitConversionsUI unitConversionsUI = new UnitConversionsUI();
+                unitConversionsUI.setVisible(true);
+                dispose();
+            }
+        });
+        btnWeightMainMenu.setForeground(Color.WHITE);
+        btnWeightMainMenu.setFont(new Font("Tahoma", Font.PLAIN, 20));
+        btnWeightMainMenu.setBackground(Color.BLUE);
+        btnWeightMainMenu.setBounds(12, 499, 176, 41);
+        contentPanel.add(btnWeightMainMenu);
+
+
+        //Exit button
+
+        JButton btnWeightExit = new JButton("Exit");
+        btnWeightExit.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+            }
+        });
+        btnWeightExit.setForeground(Color.WHITE);
+        btnWeightExit.setFont(new Font("Tahoma", Font.PLAIN, 20));
+        btnWeightExit.setBackground(Color.RED);
+        btnWeightExit.setBounds(341, 499, 129, 41);
+        contentPanel.add(btnWeightExit);
+
+
+        //Clear button
+
+        JButton btnWeightClear = new JButton("Clear");
+        btnWeightClear.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                gramm.setText(null);
+                kilogram.setText(null);
+                errorWeightMessage.setText(null);
+
+            }
+        });
+        btnWeightClear.setForeground(Color.WHITE);
+        btnWeightClear.setFont(new Font("Tahoma", Font.PLAIN, 20));
+        btnWeightClear.setBackground(new Color(0, 100, 0));
+        btnWeightClear.setBounds(200, 499, 129, 41);
+        contentPanel.add(btnWeightClear);
+
 
     }
 }
