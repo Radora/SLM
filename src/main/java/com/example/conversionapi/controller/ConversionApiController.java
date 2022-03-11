@@ -16,7 +16,6 @@ public class ConversionApiController {
     private final ConversionApiRepository repository;
 
     public ConversionApiController(ConversionApiRepository repository) {
-
         this.repository = repository;
     }
 
