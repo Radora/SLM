@@ -24,6 +24,7 @@ public class ConvertFahrenheitRepo implements ConversionStrategy {
 
     @Override
     public float getConvertedValue(float fromValue) {
+
         return (fromValue - 32) * 5 / 9;
     }
 }
